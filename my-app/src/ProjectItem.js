@@ -1,10 +1,10 @@
 import "./ProjectItem.css"
-
+import { useContext } from "react";
+import { ContextDemo } from "./ContextDemo";
 function ProjectItem(props) {
-
-  const handleBuyCourse = () => {
-    console.log("Buy Course")
-  }
+  // const { handleCounter } = props
+  const {handleCounter} = useContext(ContextDemo);
+ 
   return (
     // href="#welcome-section" target="_blank"
     <a className="project project-tile"> 
@@ -18,7 +18,7 @@ function ProjectItem(props) {
         {props.title}
         <span className="code">&#47;&gt;</span>
       </p>
-      <button className="buy-course" onClick={handleBuyCourse}>Buy Course</button>
+      <button className="buy-course" onClick={handleCounter}>Buy NFT</button>
     </a>
   )
 }
