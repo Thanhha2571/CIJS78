@@ -1,12 +1,16 @@
 // import logo from './logo.svg';
 import './App.css';
-import Header from "./Header"
+import { Routes, Route } from "react-router-dom";
+import Header from "./Header";
 import Footer from './Footer';
 import ProjectList from './ProjectList';
 import StartContact from './StartContact';
+import About from './About';
+import DetailNft from './DetailNft';
+// import Modal from './Modal';
 import { useEffect, useState } from "react";
 import LearnState from './LearnState';
-import {ContextDemoProvider} from "./ContextDemo";
+import { ContextDemoProvider } from "./ContextDemo";
 // import projectData from './mockData/productMock';
 function App() {
   // const [counter, setCounter] = useState(0)
@@ -27,17 +31,23 @@ function App() {
       {/* <h1 style = {{color:"black"}}>{currentCount}</h1>
       <button onClick = {cong} >+</button>
       <button onClick = {tru}>-</button> */}
-    
-      
-      <section id="welcome-section" className="welcome-section">
-        <h1>Hey I am mindXer</h1>
-        <p>A Full Stack Web Developer</p>
-      </section>
+
       <ContextDemoProvider>
-        <Header  />
-        <ProjectList />
+        <Header/>
+        <Routes>
+          <Route path="/welcome-section" element={<About />} />
+          <Route path="/projects" element={<ProjectList />} />
+          <Route path="/contact" element={<StartContact />} />
+          <Route path="/projects/:id" element={<DetailNft />} />
+        </Routes>
       </ContextDemoProvider>
-      <StartContact/>
+      {/* <ContextDemoProvider>
+        <Header  />
+        <About/>
+        <ProjectList /> */}
+        {/* <Modal /> */}
+      {/* </ContextDemoProvider> */}
+      {/* <StartContact/> */}
       <Footer/>
       {/* <LearnState/> */}
     </div>

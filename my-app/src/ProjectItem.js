@@ -1,13 +1,14 @@
 import "./ProjectItem.css"
 import { useContext } from "react";
 import { ContextDemo } from "./ContextDemo";
+import {Link} from "react-router-dom"
 function ProjectItem(props) {
   // const { handleCounter } = props
   const {handleCounter} = useContext(ContextDemo);
  
   return (
     // href="#welcome-section" target="_blank"
-    <a className="project project-tile"> 
+    <div className="project project-tile"> 
       <img
         className="project-image"
         src={props.bground}
@@ -19,7 +20,8 @@ function ProjectItem(props) {
         <span className="code">&#47;&gt;</span>
       </p>
       <button className="buy-course" onClick={handleCounter}>Buy NFT</button>
-    </a>
+      <Link className="buy-course" to = {`/projects/${props.id}`} >View NFT</Link>
+    </div>
   )
 }
 

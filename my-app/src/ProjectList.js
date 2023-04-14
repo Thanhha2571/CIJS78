@@ -12,7 +12,7 @@ function ProjectList(props) {
       <h2 className="projects-section-header">These are some of my NFTS</h2>
 
       <div className="projects-grid">
-        {products.map(({ id, name, url }) => <ProjectItem key={id} title={name} bground={url} />)}
+        {products.map(({ id, name, url }) => <ProjectItem key ={id} id={id} title={name} bground={url} />)}
       </div>
 
       <a href="#welcome-section" className="btn btn-show-all" target="_blank"
