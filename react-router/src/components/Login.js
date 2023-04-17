@@ -1,16 +1,25 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuthen} from "./useAuthen"
 function Login() {
 
     const [pwd, setPwd] = useState("")
     const navigate = useNavigate()
     let currentPwd = "123";
+    const isLogin = useAuthen();
 
+    useEffect (() => {
+        if (isLogin) {
+            navigate("/")
+        }
+    })
     const handleLogin = () => {
         if (pwd === currentPwd) {
-            setTimeout(() => {
-                navigate("/");
-            }, 3000);
+            localStorage.setItem("isLogin",true);
+            navigate("/")
+        }
+        else {
+            alert("Wrong password")
         }
     };
 

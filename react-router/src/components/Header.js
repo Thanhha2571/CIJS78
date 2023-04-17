@@ -1,5 +1,12 @@
 import { NavLink, useParams, useNavigate } from "react-router-dom";
+import { useAuthen} from "./useAuthen"
 function Header() {
+    const isLogin = useAuthen()
+    const navigate = useNavigate()
+    const handleLogout = () => {
+        localStorage.setItem('isLogin', false);
+        navigate("/login");
+    }
     return (
         <div>
             <header className="App-header">
@@ -19,7 +26,8 @@ function Header() {
                             <NavLink to="/listuser">ListUser</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/Login">Login</NavLink>
+                            {isLogin ? (<button onClick = {handleLogout}>Log out</button>) : (<NavLink to="/Login">Login</NavLink>)}
+                            
                         </li>
                     </ul>
                 </nav>
